@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Health Assist</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" 
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link 
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" 
+        rel="stylesheet">
+    
+    <style>
+        /* Global Font Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('https://static.vecteezy.com/system/resources/thumbnails/042/585/516/small_2x/ai-generated-medical-stethoscope-on-green-background-top-view-with-copy-space-photo.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #fff;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 28px;
+            color: #ffffff;
+        }
+        .navbar-nav .nav-link {
+            font-weight: 700;
+            font-size: 18px;
+            color: #ffffff;
+            margin-right: 20px;
+            transition: color 0.3s;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #00FFFF;
+            text-decoration: underline;
+        }
+        .navbar-nav .nav-link.active {
+            background-color: transparent !important;  /* Override Bootstrap's active link background */
+            color: #00FFFF !important;  /* Set active link color */
+            text-decoration: underline;
+        }
+
+        /* Logo Styling */
+        .logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+        }
+        .logo img {
+            width: 100%;
+            height: 100%;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+        }
+
+        /* Main Heading Styling */
+        .main-heading {
+            font-weight: 700;
+            font-size: 48px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+            margin-top: 50px;
+        }
+
+        /* Form Container Styling */
+        .container-form {
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 30px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+        }
+        .form-group label {
+            font-weight: 600;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .form-control {
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+        }
+        /* Adjusted Predict Button Styling */
+        .btn-submit {
+            font-weight: 700;
+            font-size: 18px;  /* Adjust the font size */
+            padding: 8px 20px;  /* Adjust padding to match the Disease button */
+            border-radius: 8px;
+            background-color: #ff4d4d;
+            border: none;
+            transition: background-color 0.3s;
+            width: auto; /* Set to auto for smaller width */
+            display: block; /* Block display to align left */
+        }
+        .btn-submit:hover {
+            background-color: #e60000;
+        }
+
+        /* Result Buttons Styling */
+        .result-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .toggle-button {
+            font-weight: 600;
+            font-size: 18px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin: 10px;
+            color: #000;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .toggle-button:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        /* Modal Header Styling */
+        .modal-header {
+            background-color: #000000;
+            color: #ffffff;
+            border-bottom: none;
+        }
+        .modal-body {
+            color: #000000;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center">
+                <div class="logo">
+                    <img src="{{ url_for('static', filename='img.png') }}" alt="Logo">
+                </div>
+                <a class="navbar-brand" href="#">Health Assist</a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon text-white"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Heading -->
+    <h1 class="text-center main-heading">Your Gateway to Quality Healthcare</h1>
+
+    <!-- Main Form -->
+    <div class="container container-form">
+        <form action="/predict" method="post">
+            <div class="form-group">
+                <label for="symptoms">Enter Your Symptoms:</label>
+                <input type="text" class="form-control" id="symptoms" name="symptoms" 
+                       placeholder="e.g., headache, fever, nausea">
+            </div>
+            <br>
+            <button type="submit" class="btn btn-submit">Predict</button>
+        </form>
+    </div>
+
+    {% if predicted_disease %}
+    <!-- Results -->
+    <div class="container result-container">
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#diseaseModal" 
+                style="background:#F39334;">Disease</button>
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#descriptionModal" 
+                style="background:#268AF3;">Description</button>
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#precautionModal" 
+                style="background:#F371F9;">Precaution</button>
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#medicationsModal" 
+                style="background:#F8576F;">Medications</button>
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#workoutsModal" 
+                style="background:#99F741;">Workouts</button>
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#dietsModal" 
+                style="background:#E5E23D;">Diets</button>
+    </div>
+    {% endif %}
+
+    <!-- Disease Modal -->
+    <div class="modal fade" id="diseaseModal" tabindex="-1" aria-labelledby="diseaseModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="diseaseModalLabel">Predicted Disease</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>{{ predicted_disease }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Description Modal -->
+    <div class="modal fade" id="descriptionModal" tabindex="-1" aria-labelledby="descriptionModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="descriptionModalLabel">Description</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>{{ dis_des }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Precaution Modal -->
+    <div class="modal fade" id="precautionModal" tabindex="-1" aria-labelledby="precautionModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="precautionModalLabel">Precaution</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        {% for i in my_precautions %}
+                            <li>{{ i }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Medications Modal -->
+    <div class="modal fade" id="medicationsModal" tabindex="-1" aria-labelledby="medicationsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="medicationsModalLabel">Medications</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        {% for i in medications %}
+                            <li>{{ i }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Workouts Modal -->
+    <div class="modal fade" id="workoutsModal" tabindex="-1" aria-labelledby="workoutsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="workoutsModalLabel">Workouts</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        {% for i in workout %}
+                            <li>{{ i }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Diets Modal -->
+    <div class="modal fade" id="dietsModal" tabindex="-1" aria-labelledby="dietsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="dietsModalLabel">Diets</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        {% for i in my_diet %}
+                            <li>{{ i }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" 
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" 
+            crossorigin="anonymous"></script>
+</body>
+</html>

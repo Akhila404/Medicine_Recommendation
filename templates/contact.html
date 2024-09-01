@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact Us</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* Global Font Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('https://static.vecteezy.com/system/resources/thumbnails/042/585/516/small_2x/ai-generated-medical-stethoscope-on-green-background-top-view-with-copy-space-photo.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center; /* Aligns text vertically with the logo */
+            font-weight: 800;
+            font-size: 28px;
+            color: #ffffff;
+        }
+
+        .navbar-brand img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%; /* Make the logo circular */
+            border: 2px solid #ffffff; /* Optional: Add a white border */
+        }
+
+        .navbar-brand h2 {
+            font-weight: 700;
+            font-size: 28px;
+            color: #ffffff;
+            margin-left: 15px;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        .navbar-nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar-nav .nav-link {
+            font-weight: 700;
+            font-size: 18px;
+            color: #ffffff;
+            transition: color 0.3s;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #00FFFF;
+            text-decoration: underline;
+        }
+
+        .navbar-nav .nav-link.active {
+            color: #00FFFF !important;
+            text-decoration: underline;
+        }
+
+        .navbar-toggler {
+            border: none;
+        }
+
+        .navbar-toggler-icon {
+            background-color: #ffffff;
+        }
+
+        /* Page Header Styling */
+        .page-header {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .page-header h1 {
+            font-weight: 700;
+            font-size: 36px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Section Styling */
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .get-in-touch {
+            background-color: rgba(0, 0, 0, 0.5); /* Shaded effect */
+        }
+
+        .section h2 {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .section p,
+        .section a {
+            font-size: 18px;
+            color: #ffffff;
+        }
+
+        .section a {
+            color: #00FFFF;
+            text-decoration: none;
+        }
+
+        .section a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-info {
+            font-size: 18px;
+        }
+
+        /* Contact Form Styling */
+        .contact-form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            /* Remove the background to make it transparent */
+            background: transparent;
+        }
+
+        .contact-form h3 {
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-form .form-control {
+            background: transparent;
+            border: 2px solid #00FFFF;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        .contact-form .btn {
+            background-color: #00FFFF;
+            color: #000;
+            font-weight: 700;
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .contact-form .btn:hover {
+            background-color: #00CED1;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="/">
+            <img src="static/img.png" alt="Logo">
+            <h2>Health Assist</h2>
+        </a>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1>Contact Us</h1>
+        <p>Have questions or need assistance? We're here to help!</p>
+    </header>
+
+    <!-- Get in Touch Section -->
+    <section class="section get-in-touch">
+        <h2>Get in Touch</h2>
+        <p>Feel free to reach out to us via email or through the contact form below. We value your feedback and are
+            committed to providing you with the best possible experience.</p>
+        <p class="contact-info">
+            <strong>Email:</strong> <a href="mailto:Healthassist@gmail.com">Healthassist@gmail.com</a><br>
+            <strong>Phone:</strong> <a href="tel:+923477155035">9234700155035</a><br>
+            <strong>Location:</strong> Gachobowli, Hyderabad, Telangana.
+        </p>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="section">
+        <div class="contact-form">
+            <h3>Contact Form</h3>
+            <form>
+                <div class="mb-3">
+                    <label for="fullName" class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="fullName" placeholder="Enter your full name">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email ID</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <input type="text" class="form-control" id="address" placeholder="Enter your address">
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea class="form-control" id="message" rows="3" placeholder="Enter your message"></textarea>
+                </div>
+                <button type="submit" class="btn">Submit</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
